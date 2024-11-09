@@ -1,0 +1,17 @@
+version: "3.9"
+services:
+  app:
+    container_name: app
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: deploy-api
+    environment:
+      ENV: DEV
+      APP_NAME: note_app
+      PORT: 8080
+      DATABASE_URL: user:P@ssw0rd@tcp(db:3306)/note_app?parseTime=true
+    volumes:
+      - ./:/app
+    ports:
+      - "8080:8080"
